@@ -47,5 +47,6 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📫 Contato
 Gilvan Moura - [@mouragilvan](https://mouragilvan.github.io)
+E-mail: gilvan.moura@outlook.com.br
 
 Link do projeto: [https://github.com/mouragilvan/imagem-php-oracle](https://github.com/mouragilvan/imagem-php-oracle)
