@@ -46,6 +46,6 @@ O arquivo de configuração principal do PHP está localizado em `/usr/local/etc
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ## 📫 Contato
-Gilvan Moura - [@mouragilvan](https://github.com/mouragilvan)
+Gilvan Moura - [@mouragilvan](https://mouragilvan.github.io)
 
 Link do projeto: [https://github.com/mouragilvan/imagem-php-oracle](https://github.com/mouragilvan/imagem-php-oracle)
