@@ -43,7 +43,7 @@ O arquivo de configuração principal do PHP está localizado em `/usr/local/etc
 5. Abra um Pull Request
 
 ## 📝 Licença
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Este projeto está sob a licença MIT..
 
 ## 📫 Contato
 Gilvan Moura - [@mouragilvan](https://mouragilvan.github.io)
