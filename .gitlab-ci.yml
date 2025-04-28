@@ -1,0 +1,48 @@
+image: php:8.2-fpm-alpine
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: always  
+
+variables:
+    IMAGE_SHA: $CI_REGISTRY/semed/imagem-php-oracle/$CI_COMMIT_BRANCH:$CI_COMMIT_SHORT_SHA
+    IMAGE_LATEST: $CI_REGISTRY/semed/imagem-php-oracle/$CI_COMMIT_BRANCH:latest
+
+stages:
+  - docker-build
+  - docker-scan
+  - docker-push
+
+docker-build:
+  stage: docker-build
+  image: docker:stable
+  services:
+    - name: docker:dind
+  script:
+    - docker build . -t $IMAGE_SHA -t $IMAGE_LATEST
+
+docker-scan:
+  image:
+    name: aquasec/trivy:latest
+    entrypoint: [""]
+  stage: docker-scan
+  cache:
+    key: trivy-db
+    paths:
+      - /root/.cache/trivy
+  script:
+    - trivy image --download-db-only  # Ensures DB is downloaded if not present
+    - trivy image --exit-code 1 --severity HIGH,CRITICAL $IMAGE_SHA
+  allow_failure: false
+
+docker-push:
+  stage: docker-push
+  image: docker:stable
+  services:
+    - name: docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+  script:
+    - docker push $IMAGE_SHA
+    - docker push $IMAGE_LATEST
